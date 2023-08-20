@@ -9,11 +9,13 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument(
     "first_file",
-    type=str
+    type=str,
+    nargs='?'
 )
 parser.add_argument(
     "second_file",
-    type=str
+    type=str,
+    nargs='?'
 )
 parser.add_argument(
     "-f",
@@ -25,8 +27,9 @@ args = parser.parse_args()
 
 
 def main():
-    diff = generate_diff(args.first_file, args.second_file)
-    print(diff)
+    if args.first_file and args.second_file:
+        diff = generate_diff(args.first_file, args.second_file)
+        print(diff)
 
 
 def generate_diff(first_path, second_path):
