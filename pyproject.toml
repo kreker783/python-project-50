@@ -14,11 +14,11 @@ main = "gendiff.scripts.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pytest = "^7.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"
-pytest = "^7.4.0"
 
 
 [build-system]
