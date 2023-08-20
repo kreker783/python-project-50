@@ -2,8 +2,8 @@ from gendiff.scripts.gendiff import generate_diff
 
 
 def test_gendiff():
-    first_path = "/home/kreker/Projects/python-project-50/gendiff/files/file1.json"
-    second_path = "/home/kreker/Projects/python-project-50/gendiff/files/file2.json"
+    first_path = "gendiff/files/file1.json"
+    second_path = "gendiff/files/file2.json"
     result = """{
                     - follow: false
                     host: hexlet.io
