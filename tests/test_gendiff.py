@@ -4,8 +4,7 @@ from gendiff.scripts.gendiff import generate_diff
 def test_gendiff():
     first_path = "gendiff/files/file1.json"
     second_path = "gendiff/files/file2.json"
-    result = """
-{
+    result = """{
   - follow: False
     host: hexlet.io
   - proxy: 123.234.53.22
