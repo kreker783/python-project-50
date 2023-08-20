@@ -1,6 +1,6 @@
 import argparse
-from pathlib import Path
 import json
+
 
 parser = argparse.ArgumentParser(
     prog="gendiff",
@@ -24,35 +24,45 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-def generate_diff():
-    first_file = json.load(open(args.first_file))
-    second_file = json.load(open(args.second_file))
+def main():
+    diff = generate_diff(args.first_file, args.second_file)
+    print(diff)
+
+
+def generate_diff(first_path, second_path):
+    first_file = json.load(open(first_path))
+    second_file = json.load(open(second_path))
 
     first_file = sort_dict(first_file)
     second_file = sort_dict(second_file)
 
-    result = '{\n'
-
-    for _, (key, item) in enumerate(first_file.items()):
-        if key in second_file and item == second_file[key]:
-            result += f"    {key}: {item}\n"
-        elif key in second_file:
-            result += f"  - {key}: {item}\n"
-            result += f"  + {key}: {second_file[key]}\n"
-        elif key not in second_file:
-            result += f"  - {key}: {item}\n"
-
-    for _, (key, item) in enumerate(second_file.items()):
-        if key not in first_file:
-            result += f"  + {key}: {item}\n"
-
-    result += "}"
-    print(result)
+    return get_final_line(first_file, second_file)
 
 
 def sort_dict(arr):
     return dict(sorted(arr.items()))
 
 
+def get_final_line(first_dict, second_dict):
+    result = '{\n'
+
+    for _, (key, item) in enumerate(first_dict.items()):
+        if key in second_dict and item == second_dict[key]:
+            result += f"    {key}: {item}\n"
+        elif key in second_dict:
+            result += f"  - {key}: {item}\n"
+            result += f"  + {key}: {second_dict[key]}\n"
+        elif key not in second_dict:
+            result += f"  - {key}: {item}\n"
+
+    for _, (key, item) in enumerate(second_dict.items()):
+        if key not in first_dict:
+            result += f"  + {key}: {item}\n"
+
+    result += "}"
+
+    return result
+
+
 if __name__ == "__main__":
-    generate_diff()
+    main()
