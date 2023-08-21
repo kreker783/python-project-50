@@ -15,3 +15,6 @@ install_test:
 
 test:
 	python3 -m pytest
+
+test-coverage:
+	coverage report
