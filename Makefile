@@ -12,6 +12,7 @@ lint:
 
 install_test:
 	pip install pytest
+	pip install coverage
 
 test:
 	coverage run -m pytest
