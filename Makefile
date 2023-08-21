@@ -14,7 +14,7 @@ install_test:
 	pip install pytest
 
 test:
-	python3 -m pytest
+	poetry run pytest --cov=gendiff --cov-report xml
 
 test-coverage:
 	coverage report
