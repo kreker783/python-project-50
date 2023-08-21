@@ -15,7 +15,7 @@ install_test:
 	pip install coverage
 
 test:
-	python3 -m pytest
+	coverage run -m pytest
 
 test-coverage:
 	coverage report
