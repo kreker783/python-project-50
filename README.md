@@ -5,4 +5,5 @@
 
 
 How gendiff json work: https://asciinema.org/a/to6YzoJjGbi0ZDZJcQUCsrfZi
+
 How gendiff yaml work: https://asciinema.org/a/BXgXrPnTpVj0Iq8DaZ3zuxHNn
