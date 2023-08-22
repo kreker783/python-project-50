@@ -1,5 +1,8 @@
 import argparse
 import json
+import yaml
+from re import search
+import gendiff.logic.file_format as ff
 
 
 parser = argparse.ArgumentParser(
@@ -33,30 +36,18 @@ def main():
 
 
 def generate_diff(first_path, second_path):
-    first_file = json.load(open(first_path))
-    second_file = json.load(open(second_path))
 
-    first_file = sort_dict(first_file)
-    second_file = sort_dict(second_file)
+    first_file, second_file = ff.get_dict_from_file(first_path, second_path)
 
     return get_line(first_file, second_file)
 
 
-def sort_dict(arr):
-    return dict(sorted(arr.items()))
+# def sort_dict(arr):
+#     return dict(sorted(arr.items()))
 
 
 def get_line(first_dict, second_dict):
     result = get_first_dict(first_dict, second_dict)
-
-    # for _, (key, item) in enumerate(first_dict.items()):
-    #     if key in second_dict and item == second_dict[key]:
-    #         result += f"    {key}: {item}\n"
-    #     elif key in second_dict:
-    #         result += f"  - {key}: {item}\n"
-    #         result += f"  + {key}: {second_dict[key]}\n"
-    #     elif key not in second_dict:
-    #         result += f"  - {key}: {item}\n"
 
     for _, (key, item) in enumerate(second_dict.items()):
         if key not in first_dict:

@@ -1,0 +1,7 @@
+[report]
+omit = 
+	*/usr/lib*
+
+[run]
+omit = 
+	/usr/lib*
