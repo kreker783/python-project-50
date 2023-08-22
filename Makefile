@@ -18,4 +18,4 @@ test:
 	coverage run -m pytest
 
 test-coverage:
-	coverage report
+	coverage xml
