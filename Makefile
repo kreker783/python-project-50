@@ -12,9 +12,10 @@ lint:
 
 install_test:
 	pip install pytest
+	pip install coverage
 
 test:
-	poetry run pytest --cov=gendiff --cov-report xml
+	coverage run -m pytest
 
 test-coverage:
-	coverage report
+	coverage xml
