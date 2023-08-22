@@ -1,4 +1,6 @@
 import argparse
+import json
+
 from gendiff.logic.converting import get_line
 import gendiff.logic.file_format as ff
 
@@ -36,8 +38,10 @@ def main():
 def generate_diff(first_path, second_path):
 
     first_file, second_file = ff.get_dict_from_file(first_path, second_path)
-
-    return get_line(first_file, second_file)
+    result = json.dumps(get_line(first_file, second_file), indent=4)
+    result = result.replace('"', '')
+    result = result.replace(',', '')
+    return result
 
 
 if __name__ == "__main__":
