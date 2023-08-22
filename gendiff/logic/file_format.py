@@ -7,8 +7,6 @@ def get_dict_from_file(first_path, second_path):
     # get file format (json, yaml...)
     file_format = search("([^.]*$)", first_path).group(0)
 
-    print(file_format)
-
     parsed_first_file = ""
     parsed_second_file = ""
 
