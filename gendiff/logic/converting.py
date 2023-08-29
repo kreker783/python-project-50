@@ -1,4 +1,4 @@
-result = {}
+res = """{"""
 
 
 def get_line(first_dict, second_dict):
@@ -8,8 +8,8 @@ def get_line(first_dict, second_dict):
         if key not in first_dict:
             add_to_result(key, item, '+')
 
-    global result
-    return result
+    global res
+    return res
 
 
 def get_first_dict(arr1, arr2):
@@ -18,12 +18,15 @@ def get_first_dict(arr1, arr2):
         if key in arr2 and item == arr2[key]:
             add_to_result(key, item)
         elif key in arr2:
-            add_to_result(key, item, "-")
-            add_to_result(key, arr2[key], "+")
+            if isinstance(item, dict) and isinstance(arr2[key], dict):
+                get_line(item, arr2[key])
+            else:
+                add_to_result(key, item, "-")
+                add_to_result(key, arr2[key], "+")
         elif key not in arr2:
             add_to_result(key, item, "-")
 
 
-def add_to_result(key, value, sign=" "):
-    global result
-    result[f"{sign} {key}"] = value
+def add_to_result(key, value, sign=" ", indent=4):
+    global res
+    res += f'{indent * " "}{sign} "{key}": "{value}",'
