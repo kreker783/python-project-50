@@ -17,12 +17,16 @@ def get_first_dict(arr1, arr2, temp):
 
     for _, (key, item) in enumerate(arr1.items()):
         if key in arr2 and item == arr2[key]:
-            add_to_result(key, item, temp)
+            add_to_result(key, item, temp=temp)
         elif key in arr2:
             if isinstance(item, dict) and isinstance(arr2[key], dict):
                 global temp_dict
+
+                ter = {}
+
                 get_line(item, arr2[key], temp=True)
-                add_to_result(key, temp_dict)
+                add_to_result(key, temp_dict, temp=temp)
+
                 temp_dict = {}
             else:
                 add_to_result(key, item, "-", temp=temp)
