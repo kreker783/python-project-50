@@ -38,9 +38,11 @@ def main():
 def generate_diff(first_path, second_path):
 
     first_file, second_file = ff.get_dict_from_file(first_path, second_path)
-    result = json.dumps(get_line(first_file, second_file), indent=4)
-    result = result.replace('"', '')
-    result = result.replace(',', '')
+    x = get_line(first_file, second_file)
+    print(x)
+    result = json.dumps(json.loads(x))
+    # result = result.replace('"', '')
+    # result = result.replace(',', '')
     return result
 
 
