@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from gendiff.logic.converting import get_line
+from gendiff.logic.converting import get_result
 import gendiff.logic.file_format as ff
 
 
@@ -37,7 +37,7 @@ def main():
 
 def generate_diff(first_path, second_path):
     first_file, second_file = ff.get_dict_from_file(first_path, second_path)
-    result = get_line(first_file, second_file)
+    result = get_result(first_file, second_file)
     return result
 
 
