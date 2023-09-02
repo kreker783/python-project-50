@@ -33,19 +33,13 @@ def add_first_dict(arr1, arr2, indent):
                 add_to_result(key, item, indent, sign="-")
                 add_to_result(key, arr2[key], indent, sign="+")
         elif key not in arr2:
-            if if_dict(item):
-                add_nested_dict(key, item, {}, indent)
-            else:
-                add_to_result(key, item, indent, sign="-")
+            not_in_arr(key, item, indent, "-")
 
 
 def add_second_dict(first_dict, second_dict, indent=0):
     for _, (key, item) in enumerate(second_dict.items()):
         if key not in first_dict:
-            if if_dict(item):
-                add_nested_dict(key, item, {}, indent)
-            else:
-                add_to_result(key, item, indent, sign='+')
+            not_in_arr(key, item, indent, "+")
 
 
 def if_dict(*args):
@@ -65,19 +59,27 @@ def add_nested_dict(key, item, item2, indent):
     add_to_result("", "}", indent)
 
 
-# def not_in_arr(key, item, indent, is_first):
-#     if is_first:
-#         add_to_result(key, "{", indent, "+")
-#     else:
-#         add_to_result(key, "{", indent, "-")
-#
-#     for _, (key, value) in enumerate(item.items()):
-#         if if_dict(value):
-#             indent += 4
-#             not_in_arr(key, value, indent)
-#             indent -= 4
-#         else:
-#             add_to_result(key, item, indent)
+def not_in_arr(key, item, indent, sign):
+    if if_dict(item):
+        add_to_result(key, "{", indent, sign)
+        for_not_in_arr(item, indent)
+        add_to_result("", "}", indent)
+    else:
+        add_to_result(key, item, indent, sign)
+
+
+def for_not_in_arr(item, indent):
+    for _, (key, value) in enumerate(item.items()):
+        if if_dict(value):
+            indent += 4
+
+            add_to_result(key, "{", indent)
+            for_not_in_arr(value, indent)
+            add_to_result("", "}", indent)
+
+            indent -= 4
+        else:
+            add_to_result(key, value, indent + 5, sign="")
 
 
 def add_to_result(key, value, indent, sign=" "):
