@@ -7,3 +7,18 @@
 How gendiff json work: https://asciinema.org/a/to6YzoJjGbi0ZDZJcQUCsrfZi
 
 How gendiff yaml work: https://asciinema.org/a/BXgXrPnTpVj0Iq8DaZ3zuxHNn
+
+"""
+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
+
+# Cache for 1 week
+git config --global credential.helper "cache --timeout=604800"
+
+
+
+
+
+
+
+#Tocken for pypi
+pypi-AgEIcHlwaS5vcmcCJDE4NDc3MjFkLTdjNGEtNDE3MC1iZDBkLWEyOWNmYzIzMDMwMwACKlszLCI3NDZlZjc2Yi00ODg4LTRmOGQtYmZlMS01M2YxMGExODFmZmQiXQAABiBVtcZIz22PSDaTBsyrvFDGI92sRDk21jKtFuDchuZA9Q
