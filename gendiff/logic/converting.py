@@ -31,11 +31,11 @@ def add_first_dict(arr1,
             if if_dict(item, arr2[key]):
                 add_nested_dict(key, item, arr2[key], indent)
             elif if_dict(item):
-                add_nested_dict(key, item, {}, indent)
+                not_in_arr(key, item, indent, "-")
                 add_to_result(key, arr2[key], indent, sign="+")
             elif if_dict(arr2[key]):
+                not_in_arr(key, arr2[key], indent, "+")
                 add_to_result(key, item, indent, sign="-")
-                add_nested_dict(key, {}, arr2[key], indent)
             else:
                 add_to_result(key, item, indent, sign="-")
                 add_to_result(key, arr2[key], indent, sign="+")
